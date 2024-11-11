@@ -3,7 +3,7 @@
 -- Proceding with the Task's
 
 -- 4. Ensure the script handles potential errors, such as if the database or tables already exist.
--- 1. Provide a SQL script that initializes the database for the Job Board scenario ìCareerHubî.
+-- 1. Provide a SQL script that initializes the database for the Job Board scenario ‚ÄúCareerHub‚Äù.
 
 IF NOT EXISTS (SELECT * FROM sys.databases WHERE name = 'CareerHub')
 BEGIN
@@ -107,7 +107,11 @@ INSERT INTO Applicants (ApplicantID, FirstName, LastName, Email, Phone, Resume) 
 (7, 'Raju', 'Das', 'raju.das@gmail.com', '9876543216', 'Quality assurance engineer with automation expertise'),
 (8, 'Rita', 'Rana', 'rita.rana@outlook.com', '9876543217', 'DevOps engineer with cloud certification'),
 (9, 'Sunil', 'Mishra', 'sunil.mishra@gmail.com', '9876543218', 'Experienced in customer support and technical troubleshooting'),
-(10, 'Priya', 'Das', 'priya.das@gmail.com', '9876543219', 'Cloud architect with AWS certification');
+(10, 'Priya', 'Das', 'priya.das@gmail.com', '9876543219', 'Cloud architect with AWS certification'),
+(11, 'Leo', 'Das', 'leo@yahoo.com', '9876543220', 'Business analyst with strong communication skills'),
+(12, 'Varshini', 'Sharma', 'varshini@gmail.com', '9876543221', 'Quality assurance engineer with automation expertise'),
+(13, 'Sathish', 'Kumar', 'sathish.kumar@outlook.com', '9876543222', 'Data analysis expert with Python and R'),
+(14, 'Raju', 'Bhai', 'raju.bhai@gmail.com', '9876543223', 'Business analyst with strong communication skills');
 
 SELECT * FROM Applicants;
 
@@ -122,7 +126,9 @@ INSERT INTO Applications (ApplicationID, JobID, ApplicantID, ApplicationDate, Co
 (7, 7, 7, '2023-11-17', 'Expert in quality assurance, committed to ensuring software quality.'),
 (8, 8, 8, '2023-11-18', 'Certified DevOps engineer passionate about automation and cloud.'),
 (9, 9, 9, '2023-11-19', 'Dedicated to providing excellent technical support and troubleshooting.'),
-(10, 10, 10, '2023-11-20', 'Experienced in cloud solutions, with a focus on scalability and security.');
+(10, 10, 10, '2023-11-20', 'Experienced in cloud solutions, with a focus on scalability and security.'),
+(11, 2, 13, '2023-11-25', 'Excited to apply my data analysis skills to drive business insights.'),
+(12, 6, 14, '2023-11-28', 'Skilled business analyst with a focus on data-driven decisions.');
 
 SELECT * FROM Applications;
 
@@ -222,6 +228,10 @@ SET YearsOfExperience =
         WHEN ApplicantID = 8 THEN 5
         WHEN ApplicantID = 9 THEN 4
 		WHEN ApplicantID = 10 THEN 6
+		WHEN ApplicantID = 11 THEN 1
+		WHEN ApplicantID = 12 THEN 1
+		WHEN ApplicantID = 13 THEN 4
+		WHEN ApplicantID = 14 THEN 2
     END;
 
 DECLARE @CityX VARCHAR(255) = 'Chennai';
@@ -236,11 +246,11 @@ SELECT * FROM Applicants;
 SELECT * FROM Applications;
 SELECT * FROM Jobs;
 
-/* 11. Retrieve a list of distinct job titles with salaries between $60,000 and $80,000. */
+/* 11. Retrieve a list of distinct job titles with salaries between $60,0000 and $80,0000. */
 
 SELECT DISTINCT JobTitle
 FROM Jobs
-WHERE Salary BETWEEN 60000 AND 80000;
+WHERE Salary BETWEEN 600000 AND 800000;
 
 /* 12. Find the jobs that have not received any applications. */
 
@@ -270,6 +280,7 @@ ON c.CompanyID = j.CompanyID
 GROUP BY c.CompanyName;
 
 /* 15. List all applicants along with the companies and positions they have applied for, including those who have not applied. */
+
 
 SELECT a.FirstName, a.LastName, c.CompanyName, j.JobTitle
 FROM Applicants a
