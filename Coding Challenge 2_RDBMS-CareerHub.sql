@@ -340,3 +340,10 @@ FROM Applicants a
 CROSS JOIN Companies c
 WHERE c.Location = @City AND a.YearsOfExperience > 2;
 
+
+-- ==================================================================================================== 
+
+SELECT * FROM Jobs;
+SELECT * FROM Companies;
+SELECT * FROM Applications;
+SELECT * FROM Applicants;
